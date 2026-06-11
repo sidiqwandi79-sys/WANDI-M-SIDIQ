@@ -8,12 +8,32 @@
 body {
     font-family: 'Poppins', sans-serif;
     /* EFEK GRADASI: Diagonal modern dari gelap ke ungu malam */
-    background: linear-gradient(135deg, #FF0000 5%, #00FFOO 50%, #0000FF 100%);
+    background: linear-gradient(135deg, #FF0000 5%, #00FF00 50%, #0000FF 100%);
     background-attachment: fixed; /* Menjaga gradasi tidak ikut bergeser saat di-scroll */
     color: #cbd5e1;
     display: block;
     padding: 40px 20px;
     min-height: 100vh;
+}
+
+/* --- EFEK ZOOM MURNI CSS (Trik Checkbox) --- */
+/* Menyembunyikan checkbox pemicu agar tidak terlihat di layar */
+#zoom-trigger {
+    display: none;
+}
+
+/* Ketika foto diklik (checkbox tercentang), ubah ukuran frame foto */
+#zoom-trigger:checked ~ .card header .profile-frame {
+    border-radius: 16px; /* Mengubah bentuk bulat menjadi kotak tumpul saat membesar */
+    transform: scale(2.2); /* Mengubah tingkat kebesaran zoom (2.2 kali lipat) */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    z-index: 999; /* Memastikan foto berada di lapisan paling depan */
+    position: relative;
+}
+
+/* Ketika foto diklik, ubah posisi fokus gambar di dalamnya */
+#zoom-trigger:checked ~ .card header .profile-frame img {
+    object-position: center; /* Memindahkan fokus ke tengah saat membesar */
 }
 
 /* --- CARD CONTAINER --- */
@@ -45,6 +65,8 @@ header {
     overflow: hidden;
     border: 3px solid #38bdf8; /* Garis tepi biru neon modern */
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transisi halus saat di-zoom */
 }
 
 .profile-frame img {
@@ -52,7 +74,7 @@ header {
     height: 100%;
     object-fit: cover;
     object-position: top; /* Menggeser gambar ke atas agar wajah kelihatan */
-
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 header h1 {
@@ -95,7 +117,7 @@ section h3 {
     color: #38bdf8;
 }
 
-/* --- BIODATA GRID (DENGAN EFEK INTERAKTIF BARU) --- */
+/* --- BIODATA GRID --- */
 .bio-grid {
     background: #111827;
     padding: 15px;
@@ -132,7 +154,7 @@ section h3 {
     color: #38bdf8; /* Teks label ikut menyala biru */
 }
 
-/* --- SKILLS TAGS (DENGAN EFEK TRANSISI) --- */
+/* --- SKILLS TAGS --- */
 .skills-tags {
     display: flex;
     flex-wrap: wrap;
