@@ -79,6 +79,9 @@
                     <a href="https://www.tiktok.com/@wandi_0370" target="_blank" class="btn tiktok">
                         <i class="fa-brands fa-tiktok"></i> TikTok
                     </a>
+                    <a href="https://www.instagram.com/username_kamu" target="_blank" class="btn instagram">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
                     <a href="https://wa.me/6283820544078" target="_blank" class="btn whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
@@ -96,18 +99,15 @@
     </footer>
 
     <script>
-        // Menggunakan LocalStorage agar hitungan bertambah setiap kali halaman dimuat ulang (refresh)
         let totalVisits = localStorage.getItem('wandi_portfolio_visits');
         
         if (totalVisits) {
             totalVisits = parseInt(totalVisits) + 1;
         } else {
-            totalVisits = 1; // Jika kunjungan pertama kali
+            totalVisits = 1;
         }
         
         localStorage.setItem('wandi_portfolio_visits', totalVisits);
-        
-        // Tampilkan angkanya ke dalam tag HTML dengan id="count"
         document.getElementById('count').innerText = totalVisits;
     </script>
 
